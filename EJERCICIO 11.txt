@@ -2,23 +2,26 @@
 using namespace std;
 
 int main() {
-    int n;
+    int n, m ;
     float matriz[20][20], suma = 0;
 
-    cout << "Tamano de la matriz cuadrada (n): "; 
+    cout << "Tamano de filas (n): "; 
     cin >> n;
+    
+    cout << "Tamano de columnas (m): "; 
+    cin >> m;
 
-    cout << "Ingrese los " << n * n << " elementos de la matriz (separados por espacio o Enter):" << endl;
+    cout << "Ingrese los " << n * m << " elementos de la matriz (separados por espacio o Enter):" << endl;
 
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < m; j++) {
             cin >> matriz[i][j];
         }
     }
 
     cout << "\nMatriz ingresada:" << endl;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+        for (int j = 0; j < m; j++) {
             cout << matriz[i][j] << "\t";
         }
         cout << endl; 
