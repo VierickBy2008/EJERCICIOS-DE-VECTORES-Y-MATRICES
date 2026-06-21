@@ -11,7 +11,7 @@ int main() {
     cout << "Tamano de columnas (m): "; 
     cin >> m;
 
-    cout << "Ingrese los " << n * m << " elementos de la matriz (separados por espacio o Enter):" << endl;
+    cout << "\nIngrese los " << n * m << " elementos de la matriz:" << endl;
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -29,18 +29,20 @@ int main() {
     }
     cout << endl;
 
-    if (n == m) {
-        for (int i = 0; i < n; i++) {
-            suma_principal += matriz[i][i];                
-            suma_inversa += matriz[i][n - 1 - i];         
-        }
-
-        cout << "La suma de la diagonal principal es: " << suma_principal << endl;
-        cout << "La suma de la diagonal inversa es: " << suma_inversa << endl;
+    int limite;
+    if (n < m) {
+        limite = n; // Si hay menos filas que columnas, el límite es n
     } else {
-        cout << "Advertencia: La matriz no es cuadrada (" << n << "x" << m << ")." << endl;
-        cout << "Las diagonales principal e inversa solo se definen en matrices cuadradas (n = m)." << endl;
+        limite = m; // En caso contrario (hay menos o igual cantidad de columnas), el límite es m
     }
+
+    for (int i = 0; i < limite; i++) {
+        suma_principal += matriz[i][i];                
+        suma_inversa += matriz[n - 1 - i][m - 1 - i];         
+    }
+
+    cout << "La suma de la diagonal normal es: " << suma_principal << endl;
+    cout << "La suma de la diagonal desde la otra punta es: " << suma_inversa << endl;
 
     return 0;
 }
