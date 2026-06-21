@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-    int n, m ;
-    float matriz[20][20], suma = 0;
+    int n, m;
+    float matriz[20][20], suma_principal = 0, suma_inversa = 0;
 
     cout << "Tamano de filas (n): "; 
     cin >> n;
@@ -29,10 +29,18 @@ int main() {
     }
     cout << endl;
 
-    for (int i = 0; i < n; i++) {
-        suma += matriz[i][i];
+    if (n == m) {
+        for (int i = 0; i < n; i++) {
+            suma_principal += matriz[i][i];                
+            suma_inversa += matriz[i][n - 1 - i];         
+        }
+
+        cout << "La suma de la diagonal principal es: " << suma_principal << endl;
+        cout << "La suma de la diagonal inversa es: " << suma_inversa << endl;
+    } else {
+        cout << "Advertencia: La matriz no es cuadrada (" << n << "x" << m << ")." << endl;
+        cout << "Las diagonales principal e inversa solo se definen en matrices cuadradas (n = m)." << endl;
     }
 
-    cout << "La suma de la diagonal principal es: " << suma << endl;
     return 0;
 }
